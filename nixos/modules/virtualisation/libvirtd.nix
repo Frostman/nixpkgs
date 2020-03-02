@@ -132,6 +132,9 @@ in {
       '';
     };
 
+    shutdownTimeout = mkOption {
+      type = types.
+
     allowedBridges = mkOption {
       type = types.listOf types.str;
       default = [ "virbr0" ];

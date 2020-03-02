@@ -130,11 +130,14 @@ in stdenv.mkDerivation rec {
     binPath = [ iptables iproute pmutils numad numactl bridge-utils dmidecode dnsmasq ebtables ] ++ optionals enableIscsi [ openiscsi ];
   in ''
     substituteInPlace $out/libexec/libvirt-guests.sh \
-      --replace 'ON_BOOT=start'       'ON_BOOT=''${ON_BOOT:-start}' \
-      --replace 'ON_SHUTDOWN=suspend' 'ON_SHUTDOWN=''${ON_SHUTDOWN:-suspend}' \
-      --replace "$out/bin"            '${gettext}/bin' \
-      --replace 'lock/subsys'         'lock' \
-      --replace 'gettext.sh'          'gettext.sh
+      --replace 'ON_BOOT=start'         'ON_BOOT=''${ON_BOOT:-start}' \
+      --replace 'ON_SHUTDOWN=suspend'   'ON_SHUTDOWN=''${ON_SHUTDOWN:-suspend}' \
+      --replace '#SHUTDOWN_TIMEOUT=300' 'SHUTDOWN_TIMEOUT=''${SHUTDOWN_TIMEOUT:-300}' \
+      --replace '#PARALLEL_SHUTDOWN=0'  'PARALLEL_SHUTDOWN=''${PARALLEL_SHUTDOWN:-0}' \
+      --replace '#START_DELAY=0'        'START_DELAY=''${START_DELAY:-0}' \
+      --replace "$out/bin"              '${gettext}/bin' \
+      --replace 'lock/subsys'           'lock' \
+      --replace 'gettext.sh'            'gettext.sh
   # Added in nixpkgs:
   gettext() { "${gettext}/bin/gettext" "$@"; }
   '
