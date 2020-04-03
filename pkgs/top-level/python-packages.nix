@@ -778,6 +778,8 @@ in {
 
   habanero = callPackage ../development/python-modules/habanero { };
 
+  hachoir = disabledIf (! pythonAtLeast "3.6") (callPackage ../development/python-modules/hachoir { });
+
   handout = callPackage ../development/python-modules/handout { };
 
   helper = callPackage ../development/python-modules/helper { };
@@ -1395,6 +1397,8 @@ in {
   remotecv = callPackage ../development/python-modules/remotecv { };
 
   pyzufall = callPackage ../development/python-modules/pyzufall { };
+
+  rauth = callPackage ../development/python-modules/rauth { };
 
   rig = callPackage ../development/python-modules/rig { };
 
