@@ -33,7 +33,7 @@ buildGoModule rec {
     substituteInPlace internal/commands/passwd.go --replace '/bin/stty' "${coreutils}/bin/stty"
   '';
 
-  vendorHash = "sha256-eHdnTpcVBSvGR9ZiK6A32jfjik8VClDTkv92bD8EIgA=";
+  vendorHash = "sha256-8uy0uLhGOyedqi3AvMsEdDQnFvGgeeZcL4tFgI6bzU8=";
 
   subPackages = [ "cmd/photoprism" ];
 
@@ -47,6 +47,9 @@ buildGoModule rec {
     homepage = "https://photoprism.app";
     description = "Photoprism's backend";
     license = licenses.agpl3Only;
-    maintainers = with maintainers; [ benesim ];
+    maintainers = with maintainers; [
+      benesim
+      Frostman
+    ];
   };
 }

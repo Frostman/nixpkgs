@@ -17,14 +17,14 @@
 }:
 
 let
-  version = "250321-57590c48b";
+  version = "250426-27ec7a128";
   pname = "photoprism";
 
   src = fetchFromGitHub {
     owner = pname;
     repo = pname;
     rev = version;
-    hash = "sha256-tJA1Q8kcX4UYDCV+rmHyd5gfEU8WkoaqNfx1/0Iy3l8=";
+    hash = "sha256-wsSWCTFfKQ+8aE8GKvXpA49LbBLMTE1lsJMYFLvquBM=";
   };
 
   libtensorflow = callPackage ./libtensorflow.nix { };
@@ -41,17 +41,17 @@ let
 
   facenet = fetchModel {
     name = "facenet";
-    hash = "sha256-aS5kkNhxOLSLTH/ipxg7NAa1w9X8iiG78jmloR1hpRo=";
+    hash = "sha256-aS5kk1hxOLSLTH/ipxg7NAa1w9X8iiG78jmloR1hpRo=";
   };
 
   nasnet = fetchModel {
     name = "nasnet";
-    hash = "sha256-bF25jPmZLyeSWy/CGXZE/VE2UupEG2q9Jmr0+1rUYWE=";
+    hash = "sha256-bF25jP1ZLyeSWy/CGXZE/VE2UupEG2q9Jmr0+1rUYWE=";
   };
 
   nsfw = fetchModel {
     name = "nsfw";
-    hash = "sha256-zy/HcmgaHOY7FfJUY6I/yjjsMPHR2Ote9ppwqemBlfg=";
+    hash = "sha256-zy/Hcm1aHOY7FfJUY6I/yjjsMPHR2Ote9ppwqemBlfg=";
   };
 
   assets_path = "$out/share/${pname}";
@@ -101,7 +101,10 @@ stdenv.mkDerivation (finalAttrs: {
     description = "Personal Photo Management powered by Go and Google TensorFlow";
     inherit (libtensorflow.meta) platforms;
     license = licenses.agpl3Only;
-    maintainers = with maintainers; [ benesim ];
+    maintainers = with maintainers; [
+      benesim
+      Frostman
+    ];
     mainProgram = "photoprism";
   };
 })
